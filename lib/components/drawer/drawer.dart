@@ -19,12 +19,6 @@ class DrawerWidget extends StatelessWidget {
             children: [
               const HeaderDrawer(),
               const SizedBox(height: 10),
-              // Menus(
-              //   title: 'Home',
-              //   icon: Icons.home,
-              //   onTap: () => Get.to('/'),
-              // ),
-              // const Divider(),
               Menus(
                 title: 'Configurações',
                 icon: Icons.settings,
@@ -35,6 +29,7 @@ class DrawerWidget extends StatelessWidget {
                 title: 'Sobre',
                 icon: Icons.info,
               ),
+              const Divider(),
             ],
           ),
         ),

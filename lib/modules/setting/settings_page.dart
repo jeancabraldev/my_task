@@ -12,28 +12,36 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.theme.backgroundColor,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
         title: Text(
           'Configurações',
-          style: headingStyle,
+          style: titleAppBar,
         ),
         leading: GestureDetector(
           onTap: () => Get.back(),
-          child: const Icon(Icons.close),
+          child: Icon(
+            Icons.close,
+            color: Get.isDarkMode
+                ? const Color(0xffffffff)
+                : const Color(0xff212529),
+          ),
         ),
       ),
       body: SizedBox(
-        width: Get.width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text('Alteralçao da cor do tema'),
+              Container(
+                width: Get.width,
+                height: 35,
+                alignment: Alignment.center,
+                color: Colors.black12,
+                child: const Text('ALTERAÇÃO DA COR DO TEMA'),
               ),
-              const SizedBox(height: 5),
-              const Divider(),
+              //const Divider(),
               MenuPages(
                 icon: Get.isDarkMode ? Icons.dark_mode : Icons.light_mode,
                 title: 'Tema',

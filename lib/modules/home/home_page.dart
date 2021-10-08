@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_task/applications/ui/theme_app.dart';
 import 'package:my_task/components/button/button.dart';
 import 'package:my_task/components/drawer/drawer.dart';
 import 'package:my_task/modules/task/add_task_page.dart';
@@ -27,16 +28,30 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       backgroundColor: context.theme.backgroundColor,
+      key: _scaffoldKey,
       drawer: const DrawerWidget(),
       appBar: AppBar(
-          /*leading: GestureDetector(
-          onTap: () {
-            //notificationService.scheduledNotification();
-          },
-        ),*/
-          ),
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          'Minhas Tarefas',
+          style: titleAppBar,
+        ),
+        leading: Builder(builder: (builder) {
+          return IconButton(
+            onPressed: () => _scaffoldKey.currentState!.openDrawer(),
+            icon: Icon(
+              Icons.menu,
+            color: Get.isDarkMode
+                ? const Color(0xffffffff)
+                : const Color(0xff212529),
+            ),
+          );
+        }),
+      ),
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
@@ -54,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                 ButtonWidget(
                   icon: Icons.add_task,
                   label: 'Nova tarefa',
-                  onPressed: () => Get.to(const AddTaskPage()),
+                  onPressed: () => Get.to(() => const AddTaskPage()),
                 ),
               ],
             ),
