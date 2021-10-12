@@ -73,11 +73,18 @@ TextStyle get titleAppBar {
   );
 }
 
+TextStyle get titleBody {
+  return TextStyle(
+    color: Get.isDarkMode ? Colors.white : Colors.black,
+    fontWeight: FontWeight.w600,
+  );
+}
+
 TextStyle get subTitleInputFields {
   return GoogleFonts.montserrat(
     textStyle: TextStyle(
       fontSize: 16,
-      color: Get.isDarkMode ? Colors.grey[100] : Colors.grey[400],
+      color: Get.isDarkMode ? Colors.grey[100] : Colors.grey[600],
     ),
   );
 }

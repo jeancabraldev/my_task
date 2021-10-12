@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:my_task/applications/ui/theme_app.dart';
 import 'package:my_task/components/button/button.dart';
 import 'package:my_task/components/drawer/drawer.dart';
 import 'package:my_task/modules/task/add_task_page.dart';
 import 'package:my_task/services/notification_service.dart';
-import 'package:intl/intl.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime _selectedDate = DateTime.now();
+ 
   dynamic notificationService;
   @override
   void initState() {
@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+     DateTime _selectedDate = DateTime.now();
     final _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       backgroundColor: context.theme.backgroundColor,
@@ -45,9 +46,9 @@ class _HomePageState extends State<HomePage> {
             onPressed: () => _scaffoldKey.currentState!.openDrawer(),
             icon: Icon(
               Icons.menu,
-            color: Get.isDarkMode
-                ? const Color(0xffffffff)
-                : const Color(0xff212529),
+              color: Get.isDarkMode
+                  ? const Color(0xffffffff)
+                  : const Color(0xff212529),
             ),
           );
         }),
@@ -63,7 +64,8 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(DateFormat.yMMMMd().format(DateTime.now())),
+                    Container(),
+                    Text(DateFormat.yMd('pt-BR').format(_selectedDate)),
                   ],
                 ),
                 ButtonWidget(

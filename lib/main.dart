@@ -7,11 +7,13 @@ import 'package:my_task/services/theme_service.dart';
 
 import 'modules/home/home_module.dart';
 import 'modules/task/add_task_module.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  runApp(const MyApp());
+  
+    runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +24,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'My Task',
+      localizationsDelegates: const [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('pt', 'BR'),
+      ],
       debugShowCheckedModeBanner: false,
       theme: ThemeApp.light,
       darkTheme: ThemeApp.dark,
